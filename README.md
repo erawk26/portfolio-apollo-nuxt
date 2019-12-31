@@ -1,24 +1,8 @@
-# vue-apollo
+# GraphCMS starter blog with Nuxt.js & Apollo Client [![Slack Status](https://slack.graphcms.com/badge.svg)](https://slack.graphcms.com)
 
-## Project setup
-```
-yarn install
-```
+For an overview of how things work in `Nuxt.js` please refer to the [Nuxt.js docs](https://nuxtjs.org/guide)
 
-### Compiles and hot-reloads for development
+## How to start
 ```
-yarn serve
+git clone https://github.com/GraphCMS/graphcms-examples.git && cd graphcms-examples/current/nuxt-apollo-blog && yarn && yarn dev
 ```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
