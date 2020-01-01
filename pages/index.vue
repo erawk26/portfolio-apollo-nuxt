@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="home">HOME</h1>
+    <h1 class="home color dk-gray">HOME</h1>
   </div>
 </template>
 

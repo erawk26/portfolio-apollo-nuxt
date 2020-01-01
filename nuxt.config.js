@@ -17,9 +17,32 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+    postcss: {
+      plugins: {
+        'postcss-import': true
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: true
+        }
+      }
     }
   },
-  modules: ['@nuxtjs/apollo'],
+  modules: [
+    '@nuxtjs/apollo',
+    '@nuxtjs/google-analytics',
+    '@nuxtjs/style-resources'
+  ],
+  googleAnalytics: {
+    id: 'G-7T0JLV856W'
+  },
+  styleResources: {
+    // your settings here
+    scss: ['~/assets/scss/_init.scss'] // alternative: scss
+  },
+  plugins: ['~/plugins/methods.js'],
   apollo: {
     clientConfigs: {
       default: '~/apollo/client-configs/default.js'

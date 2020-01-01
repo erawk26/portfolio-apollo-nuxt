@@ -1,39 +1,25 @@
-<template>
-  <div>
-    <app-header/>
-    <main>
-      <nuxt/>
-    </main>
-  </div>
+<template lang="pug">
+  .main-layout.css-grid-2
+    app-header.row-1.row-span-1.col-full
+    main.max-pg-width.row-2.row-span-1.col-full
+      nuxt
+    app-footer.row-3.row-span-1.col-full
 </template>
 
 <script>
-  import AppHeader from '../components/AppHeader'
-  export default {
-    components: { AppHeader }
-  }
+import AppHeader from '../components/Header'
+import AppFooter from '../components/Footer'
+export default {
+  components: { AppHeader, AppFooter }
+}
 </script>
 
-<style>
-  body {
-    font-family: 'Source Sans Pro', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  main {
-    max-width: 650px;
-    margin: 32px auto;
-    padding: 0 24px;
-  }
-  a {
-    color: deepskyblue;
-    text-decoration: none;
-  }
-  article {
-    margin: 0 auto;
-    max-width: 650px;
-  }
+<style lang="scss">
+@import "~/assets/scss/_atomic.scss";
+@import "~/assets/scss/_animations.scss";
+@import "~/assets/scss/_global.scss";
+.main-layout {
+  grid-template-columns: 100px 1fr 100px;
+  height: 100vh;
+}
 </style>
