@@ -5,7 +5,7 @@
             :alt="project.title"
             :src="`https://media.graphcms.com/resize=w:100,h:100,fit:crop/${project.mainImage.handle}`")
         .skills(v-if="project.skills")
-            span(v-for="skill in project.skills") {{machine_readable(skill.title)}}
+            nuxt-link(v-for="skill in project.skills" :key="project.id" :to="'/projects/by-skill/'+skill.slug") {{skill.title}}
 </template>
 
 <script>

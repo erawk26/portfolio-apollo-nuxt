@@ -16,7 +16,7 @@ export const projectsQuery = gql`
         id
       }
       skills {
-        id
+        slug
         title
       }
     }
@@ -54,6 +54,31 @@ query project($slug: String!){
       id
       slug
       title
+    }
+  }
+} `
+export const skilledProjectsQuery = gql`
+query skill($slug: String!){
+  skill(where: {slug: $slug}) {
+    title
+    slug
+    projects {
+      id
+      date
+      title
+      body
+      slug
+      mainImage {
+        url
+        width
+        height
+        handle
+        id
+      }
+      skills {
+        slug
+        title
+      }
     }
   }
 } `
