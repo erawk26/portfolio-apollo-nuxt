@@ -5,6 +5,19 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'GraphCMS Blog starter using Apollo Client and Nuxt.js' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Lato|Unica+One|Material+Icons'
+      }
     ]
   },
   build: {
@@ -42,7 +55,7 @@ module.exports = {
     // your settings here
     scss: ['~/assets/scss/_init.scss'] // alternative: scss
   },
-  plugins: ['~/plugins/methods.js'],
+  plugins: ['~/plugins/methods.js', '~/plugins/vuetify.js'],
   apollo: {
     clientConfigs: {
       default: '~/apollo/client-configs/default.js'

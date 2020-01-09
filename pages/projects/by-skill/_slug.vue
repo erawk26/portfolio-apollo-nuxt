@@ -1,5 +1,5 @@
 <template lang="pug">
-    div
+    div(v-if="$apolloData.data.skill")
         h1 {{$apolloData.data.skill.title}}
         Project.project(v-for="project in $apolloData.data.skill.projects" :key="project.id" :project="project" :isTeaser="true")
 </template>
@@ -25,9 +25,7 @@ export default {
   },
   mounted () {
   },
-  methods: {
-    // idFromSlug (arr) { return arr.filter(p => p.slug === this.$route.params.slug)[0].id }// this.$route.params.slug }
-  },
+  methods: {},
   computed: {
   }
 }

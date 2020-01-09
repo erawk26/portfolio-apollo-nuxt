@@ -50,6 +50,14 @@ query project($slug: String!){
       handle
       id
     }
+    links{
+      id
+      url
+      title
+      text
+      icon
+      hideText
+    }
     skills {
       id
       slug
@@ -74,6 +82,14 @@ query skill($slug: String!){
         height
         handle
         id
+      }
+      links{
+        id
+        url
+        icon
+        title
+        text
+        hideText
       }
       skills {
         slug
