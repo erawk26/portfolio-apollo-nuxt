@@ -17,9 +17,9 @@
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-link": "^1.2.13",
     "apollo-link-http": "^1.5.16",
-    "css-loader": "^2.2.1",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.10.1",
+    "gsap": "^3.0.5",
     "nuxt": "^2.3.4",
     "vuetify": "^2.2.3"
   },
@@ -27,6 +27,7 @@
     "@nuxtjs/google-analytics": "^2.2.2",
     "@nuxtjs/style-resources": "^1.0.0",
     "babel-eslint": "^7.2.3",
+    "css-loader": "^3.4.1",
     "eslint": "^4.3.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",

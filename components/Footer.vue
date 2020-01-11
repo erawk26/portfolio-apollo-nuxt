@@ -1,16 +1,24 @@
 <template lang="pug">
- footer.eo-flex.a-start.j-start.wrap
-  .cell.copy
-    sub &copy; 2015-{{ year }}. Made by Erik Olsen
-  .cell
-    | footer menu
-    //my-menu.nav-footer.menu--footer.eo-flex.j-start(:menu="menus.footer" :hide-text='true' type="flat")
+  span
+    v-footer(padless)
+      v-card.max-pg-width.d-flex.align-center.justify-start.flex-wrap.px-2(tile elevation="0")
+        .cell.copy
+          sub &copy; 2015-{{ year }}. Made by Erik Olsen
+        .cell
+          my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" :hide-text='true' type="flat")
+    v-bottom-navigation(fixed bottom v-show="$vuetify.breakpoint.xsOnly")
+      my-menu.nav-main.menu--main.d-flex.justify-center.full-width(:menu="menus.main" :hide-text='true' type="mobile")
 </template>
 
 <script>
+import MyMenu from '~/components/Menu'
 export default {
   name: 'AppFooter',
+  components: {MyMenu},
   computed: {
+    menus () {
+      return this.$store.state.menus
+    },
     year () {
       return new Date().getFullYear()
     }
@@ -19,24 +27,5 @@ export default {
 </script>
 
 <style scoped>
-header {
-  padding: 24px 32px;
-  margin-bottom: 32px;
-  text-align: center;
-}
-h1 {
-  font-weight: 100;
-}
-nav {
-  max-width: 650px;
-  margin: 0 auto;
-}
-.link {
-  font-size: 18px;
-  margin-right: 16px;
-}
-.nuxt-link-active {
-  font-weight: bold;
-  text-decoration: underline;
-}
+
 </style>

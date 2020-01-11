@@ -8,7 +8,8 @@ export default {
   props: {
     imageStyle: { type: String, default: 'thumb' },
     handle: { type: String, default: '' },
-    alt: { type: String, default: '' }
+    alt: { type: String, default: '' },
+    title: { type: String, default: '' }
   },
   mounted () {
     switch (this.imageStyle) {
@@ -19,6 +20,10 @@ export default {
       case 'full':
         this.imgWidth = 1600
         this.imgHeight = 900
+        break
+      case 'avatar':
+        this.imgWidth = 300
+        this.imgHeight = 300
         break
     }
   },
