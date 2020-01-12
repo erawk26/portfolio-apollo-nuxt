@@ -1,13 +1,16 @@
 <template lang="pug">
-  v-img(:alt="alt" :lazy-src="`http://via.placeholder.com/${imgWidth}x${imgHeight}`" :src="imageUrl")
+  v-img(v-if="imgUrl" :alt="alt" :title="title" :lazy-src="lazyUrl" :src="imgUrl")
     template(v-slot:placeholder)
       v-row.fill-height.ma-0(align='center' justify='center')
         v-progress-circular(indeterminate color='grey lighten-5')
 </template>
-
 <script>
 export default {
-  data: () => ({resize: null, imgWidth: 100, imgHeight: 100, imageUrl: ''}),
+  data: () => ({
+    resize: '',
+    imgWidth: 100,
+    imgHeight: 100
+  }),
   props: {
     imageStyle: { type: String, default: 'thumb' },
     handle: { type: String, default: '' },
@@ -34,10 +37,14 @@ export default {
       case 'original':
         this.resize = ''
     }
-    this.imgUrl = `https://media.graphcms.com/${this.resize}${this.handle}`
+  },
+  watch: {
+    handle () {}
   },
   methods: {},
   computed: {
+    lazyUrl () { return `http://via.placeholder.com/${this.imgWidth}x${this.imgHeight}` },
+    imgUrl () { return `https://media.graphcms.com/${this.resize}${this.handle}` }
   }
 }
 </script>
