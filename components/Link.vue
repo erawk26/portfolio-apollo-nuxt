@@ -1,5 +1,5 @@
 <template lang="pug">
-  a(:href="href" :target="target" :title="title")
+  a.link-component(:href="href" :target="target" :title="title")
     v-icon.link-icon(aria-hidden="true") {{icon}}
     span(:class="{'screen-reader':hideText}") {{ text }}
 </template>
@@ -34,8 +34,8 @@ export default {
   }
 }
 </script>
-<style>
-.mdi-link {
+<style lang="scss">
+.link-component .mdi-link {
   transform: translateY(-2px) rotate(-45deg);
 }
 </style>

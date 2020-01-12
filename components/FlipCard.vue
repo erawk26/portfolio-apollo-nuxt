@@ -1,17 +1,16 @@
 <template lang="pug">
-  v-hover(v-slot:default="{ hover }")
-    nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(:to="'/projects/'+project.slug" :class="[{ 'hover': hover }, $vuetify.breakpoint.smAndUp?'seven-five':'square']")
-      article
-        v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
-          app-img.img.flex-grow(:handle="project.mainImage.handle" imageStyle="full")
-          .content.left-text
-            h4.uc {{project.title}}
-        v-card.card-back.abs-center(ripple :elevation="hover?5:10")
-          .content.eo-flex.col.a-center.j-start.fill.dk-green.center-text
-            h4.uc {{project.title}}
-            ul.eo-flex.center.wrap.unstyle.cell.omega
-              li.skill(v-for="(skill, i) in project.skills")
-                v-chip.ma-1(color="charcoal" text-color="white") {{ skill.title }}
+  nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(v-if="project" :to="'/projects/'+project.slug" :class="[{ 'hover': hover }, $vuetify.breakpoint.smAndUp?'seven-five':'square']")
+    article
+      v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
+        app-img.img.flex-grow(:handle="project.mainImage.handle" imageStyle="full")
+        .content.left-text
+          h4.uc {{project.title}}
+      v-card.card-back.abs-center(ripple :elevation="hover?5:10")
+        .content.eo-flex.col.a-center.j-start.fill.dk-green.center-text
+          h4.uc {{project.title}}
+          ul.eo-flex.center.wrap.unstyle.cell.omega
+            li.skill(v-for="(skill, i) in project.skills")
+              v-chip.ma-1(color="charcoal" text-color="white") {{ skill.title }}
 </template>
 <script>
 import { gsap } from 'gsap'
@@ -21,8 +20,6 @@ export default {
   name: 'FlipCard',
   components: { AppImg, Link },
   props: {
-    // direction: { type: Number, default: 0 },
-    // TODO Fix HOVER event handling for GSAP
     hover: { type: Boolean, default: false },
     project: {
       type: Object,
@@ -32,7 +29,6 @@ export default {
   computed: {},
   watch: {
     hover (newVal, oldVal) {
-      console.log(newVal, oldVal)
       if (newVal) {
         this.animation(1)
       } else {

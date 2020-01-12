@@ -26,6 +26,49 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+footer.v-footer {
+  &.theme--dark {
+    background-color: #424242;
+  }
+  &.theme--light {
+    background-color: $white;
+  }
+}
+.v-bottom-navigation {
+  .nav-main.menu--main {
+    padding: 0;
+    max-width: 100%;
+    i {
+      font-size: 2.5rem;
+    }
+    .nav-item {
+      flex: 1;
+      padding: 0;
+      max-width: 75px;
+      &.v-list-item--active {
+        i,
+        span {
+          color: $dk-green;
+        }
+      }
+    }
+    button.v-btn {
+      padding: 0;
+      height: 100%;
+    }
+  }
+}
+footer > .v-card {
+  width: 100%;
+}
+.nav-footer {
+  .v-list-item__action {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  a.nav-item.v-list-item--link {
+    padding: 0 6px;
+  }
+}
 </style>
