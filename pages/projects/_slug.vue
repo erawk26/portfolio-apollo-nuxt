@@ -1,19 +1,19 @@
 <template lang="pug">
-    Project.project(:project="$apolloData.data.project" :isTeaser="false")
+    project.project(:project="$apolloData.data.project" :projectsArr="projects" :isTeaser="false")
 </template>
 
 <script>
-import { projectQuery, projectsQuery, skillsQuery } from '~/graphql/queries.js'
+import G from '~/graphql/gql.js'
 import Project from '~/components/Project'
 export default {
   components: {Project},
   apollo: {
     $loadingKey: 'loading',
     projects: {
-      query: projectsQuery
+      query: G.queries.projects
     },
     project: {
-      query: projectQuery,
+      query: G.queries.project,
       variables () {
         return {
           slug: this.$route.params.slug
@@ -21,7 +21,7 @@ export default {
       }
     },
     skills: {
-      query: skillsQuery
+      query: G.queries.skills
     }
   },
   mounted () {

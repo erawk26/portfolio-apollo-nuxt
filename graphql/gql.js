@@ -97,41 +97,7 @@ export default {
           slug
         }
       }
-    }`,
-    skilledProjects: () => gql`
-      query skill($slug: String!){
-        skill(where: {slug: $slug}) {
-          title
-          slug
-          projects {
-            id
-            date
-            title
-            body
-            slug
-            mainImage {
-              url
-              width
-              height
-              handle
-              id
-            }
-            links{
-              id
-              url
-              icon
-              title
-              text
-              hideText
-            }
-            skills {
-              slug
-              title
-            }
-          }
-        }
-      }
-    `
+    }`
   },
   mutations: {
     upsertProject: () => gql`

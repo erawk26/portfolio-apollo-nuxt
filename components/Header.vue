@@ -38,9 +38,9 @@ export default {
       background: transparent;
     }
     transition: all 200ms ease;
-    .v-list-item {
-      // padding: 0 20px;
-    }
+    // .v-list-item {
+    //   // padding: 0 20px;
+    // }
     .v-list > a.nav-item {
       padding-left: 0;
       padding-right: 0;

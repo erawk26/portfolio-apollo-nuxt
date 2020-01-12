@@ -1,8 +1,8 @@
 <template lang="pug">
-  nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(v-if="project" :to="'/projects/'+project.slug" :class="[{ 'hover': hover }, $vuetify.breakpoint.smAndUp?'seven-five':'square']")
+  nuxt-link.flip-card.d-flex.flex-wrap.align-start.rel.ar(:to="'/projects/'+project.slug" :class="[{ 'hover': hover }, $vuetify.breakpoint.smAndUp?'seven-five':'square']")
     article
       v-card.card-front.abs-center.eo-flex.col.center(ripple :elevation="hover?5:10")
-        app-img.img.flex-grow(:handle="project.mainImage.handle" imageStyle="full")
+        app-img.img.flex-grow(v-if="project.mainImage" :handle="project.mainImage.handle" imageStyle="full")
         .content.left-text
           h4.uc {{project.title}}
       v-card.card-back.abs-center(ripple :elevation="hover?5:10")
@@ -23,7 +23,7 @@ export default {
     hover: { type: Boolean, default: false },
     project: {
       type: Object,
-      default: () => ({})
+      default: () => ({mainImage: null, skills: null, links: null})
     }
   },
   computed: {},
@@ -62,6 +62,7 @@ export default {
   .img {
     width: 100%;
     flex: 1 0 calc(100% - 55px);
+    height: calc(100% - 55px);
   }
   overflow: visible;
   display: block;

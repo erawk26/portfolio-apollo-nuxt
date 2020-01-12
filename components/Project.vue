@@ -1,5 +1,6 @@
 <template lang="pug">
-  component(:is="isTeaser?'project-teaser':'project-full'" :project="project")
+  v-hover(v-slot:default="{ hover }" close-delay="350")
+    component(v-if="project" :is="isTeaser?'project-teaser':'project-full'" :hover="hover" :project="project" :projects="projectsArr")
 </template>
 
 <script>
@@ -9,6 +10,10 @@ export default {
   components: {'project-teaser': TeaserCard, 'project-full': FullCard},
   props: {
     isTeaser: { type: Boolean, default: false },
+    projectsArr: {
+      type: Array,
+      default: () => ([])
+    },
     project: {
       type: Object,
       default: () => ({})
@@ -19,5 +24,3 @@ export default {
   computed: {}
 }
 </script>
-
-<style lang="scss"></style>

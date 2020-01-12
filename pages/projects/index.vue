@@ -2,32 +2,26 @@
   v-container.cards(grid-list-lg='')
     v-layout.row.wrap
       v-flex.li(v-for='project in projects' :key='project.id' xs12 sm6 lg4)
-        project.project(:project="project" :isTeaser="true")
+        project.project(:project="project" :projectsArr="projects" :isTeaser="true")
 </template>
 
 <script>
-import { projectsQuery, skillsQuery } from '~/graphql/queries.js'
+import G from '~/graphql/gql.js'
 import Project from '~/components/Project'
 export default {
   data: () => ({
     loading: 0
   }),
   methods: {
-    machine_readable: function (str) {
-      return str
-        .toLowerCase()
-        .replace(/[^\w ]+/g, '')
-        .replace(/ +/g, '-')
-    }
   },
   components: {Project},
   apollo: {
     $loadingKey: 'loading',
     projects: {
-      query: projectsQuery
+      query: G.queries.projects
     },
     skills: {
-      query: skillsQuery
+      query: G.queries.skills
     }
   }
 }
