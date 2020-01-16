@@ -12,7 +12,6 @@ export const state = () => ({
         icon: 'work',
         title: 'Projects',
         to: '/projects'
-        // submenu: [...projectMenu]
       },
       {
         external: false,
@@ -62,4 +61,11 @@ export const state = () => ({
   }
 })
 
-export const mutations = {}
+export const mutations = {
+  addMenu (state, payload) {
+    state.menus[payload.key] = payload.menu
+  },
+  addBase (state, payload) {
+    state[payload.key] = payload[payload.key]
+  }
+}

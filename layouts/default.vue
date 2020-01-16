@@ -1,10 +1,10 @@
 <template lang="pug">
   v-app
     .main-layout.css-grid-2
-      app-header.row-1.row-span-1.col-full
-      main.full-width.max-pg-width.row-2.row-span-1.col-full
-        nuxt
-      app-footer.row-3.row-span-1.col-full
+      app-header
+      main.full-width.max-pg-width.row-1.row-span-1.col-full.pt-5
+        nuxt.pad-under-max
+      app-footer
 </template>
 
 <script>
@@ -17,16 +17,12 @@ export default {
       scrolled: 'top'
     }
   },
-  computed: {
-  },
+  computed: {},
   watch: {},
   mounted () {
     window.addEventListener('scroll', this.debounce(this.onScroll, 200))
   },
   methods: {
-    changeTheme () {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-    },
     childRoute (href) {
       return this.$route.path.split('/').includes(href.replace('/', ''))
     },
@@ -67,8 +63,21 @@ export default {
 @import "~/assets/scss/_animations.scss";
 @import "~/assets/scss/_global.scss";
 .main-layout {
-  grid-template-rows: 100px 1fr 100px;
-  height: 100vh;
+  grid-template-rows: 1fr 65px;
+    
+  @media (max-width: 599px) {
+    grid-template-rows: 1fr 135px;
+  }
+  height: 100%;
+}
+.pad-under-max {
+  $padding: 60px;
+  $bp: $page-max-width + ($padding * 2);
+  padding: 0;
+  @media (min-width: 600px) and (max-width: $bp - 1) {
+    padding-left: $padding;
+    padding-right: $padding;
+  }
 }
 .scrolled:not(.top) .navigation-drawer {
   z-index: 100;

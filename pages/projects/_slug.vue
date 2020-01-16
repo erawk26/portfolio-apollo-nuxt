@@ -1,5 +1,5 @@
 <template lang="pug">
-    project.project(:project="$apolloData.data.project" :projectsArr="projects" :isTeaser="false")
+    project.project(:project="project" :isTeaser="false")
 </template>
 
 <script>
@@ -9,9 +9,6 @@ export default {
   components: {Project},
   apollo: {
     $loadingKey: 'loading',
-    projects: {
-      query: G.queries.projects
-    },
     project: {
       query: G.queries.project,
       variables () {
@@ -19,15 +16,12 @@ export default {
           slug: this.$route.params.slug
         }
       }
-    },
-    skills: {
-      query: G.queries.skills
     }
   },
   mounted () {
+
   },
   methods: {
-    // idFromSlug (arr) { return arr.filter(p => p.slug === this.$route.params.slug)[0].id }// this.$route.params.slug }
   },
   computed: {
   }

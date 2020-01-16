@@ -1,12 +1,11 @@
 <template lang="pug">
   v-container.cards(grid-list-lg='')
     v-layout.row.wrap
-      v-flex.li(v-for='project in projects' :key='project.id' xs12 sm6 lg4)
-        project.project(:project="project" :projectsArr="projects" :isTeaser="true")
+      v-flex.li(v-for='project in $store.state.projects' :key='project.id' xs12 sm6 lg4)
+        project.project(:project="project" :projectsArr="$store.state.projects" :isTeaser="true")
 </template>
 
 <script>
-import G from '~/graphql/gql.js'
 import Project from '~/components/Project'
 export default {
   data: () => ({
@@ -15,14 +14,9 @@ export default {
   methods: {
   },
   components: {Project},
-  apollo: {
-    $loadingKey: 'loading',
-    projects: {
-      query: G.queries.projects
-    },
-    skills: {
-      query: G.queries.skills
-    }
+  mounted () {
+  },
+  computed: {
   }
 }
 </script>

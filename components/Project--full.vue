@@ -9,6 +9,7 @@
       .title-wrapper.d-flex.align-end.justify-space-between
         .cell.eo-flex.a-end
           h1.display-2 {{ project.title }}
+          app-link(v-for="(link,i) in project.links" :key="'link-'+ i + 1" hide-text :title="link.title||link.text||'Visit Site'" :text="link.text||link.title||'Visit Site'" :href="link.url" :icon="link.icon||'mdi-link'" target="_blank")
         small.counter.flex-shrink-0(@click="updatePage(looper(1))") {{keys.indexOf(project.slug) + 1}} / {{keys.length}}
           nuxt-link(:to="looper(1)")
             v-icon chevron_right
@@ -22,21 +23,17 @@
             small.full-width Skills:
             v-chip.mr-1.mb-1(small :to="'/projects/by-skill/'+skill.slug" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill.title}}
     .text-center
-      v-pagination(v-model='page' total-visible="5" :length='projects.length' circle)  
+      v-pagination(v-model='page' total-visible="5" :length='keys.length' circle)  
 </template>
 
 <script>
-import Link from '~/components/Link.vue'
+import AppLink from '~/components/Link'
 import AppImg from '~/components/Image'
 export default {
   name: 'ProjectFull',
-  components: { Link, AppImg },
+  components: { AppLink, AppImg },
   props: {
     hover: { type: Boolean, default: false },
-    projects: {
-      type: Array,
-      default: () => []
-    },
     project: {
       type: Object,
       default: () => ({})
@@ -45,7 +42,7 @@ export default {
   data: () => ({ slideTransition: 'fade', swipeDirection: null, page: null }),
   computed: {
     keys () {
-      return this.projects.map(p => p.slug)
+      return this.$store.state.projects.map(p => p.slug)
     },
     crumbs () {
       return [
@@ -62,7 +59,7 @@ export default {
         {
           text: this.project.title,
           disabled: true,
-          href: '/projects/' + this.project.slug
+          href: '/projects/' + this.$route.params.slug
         }
       ]
     }
@@ -79,7 +76,7 @@ export default {
   },
   methods: {
     paginationChange (num) {
-      const _path = '/projects/' + this.projects[num - 1]['slug']
+      const _path = '/projects/' + this.$store.state.projects[num - 1]['slug']
       this.$router.push({ path: _path })
     },
     updatePage (slug) {

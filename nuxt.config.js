@@ -45,6 +45,7 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/apollo',
+    '@nuxtjs/vuetify',
     '@nuxtjs/google-analytics',
     '@nuxtjs/style-resources'
   ],
@@ -55,7 +56,14 @@ module.exports = {
     // your settings here
     scss: ['~/assets/scss/_init.scss'] // alternative: scss
   },
-  plugins: ['~/plugins/methods.js', '~/plugins/vuetify.js'],
+  plugins: [
+    '~/plugins/methods.js'
+    // '~/plugins/vuetify.js'
+  ],
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    optionsPath: './vuetify.options.js'
+  },
   apollo: {
     clientConfigs: {
       default: '~/apollo/client-configs/default.js'

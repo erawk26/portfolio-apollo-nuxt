@@ -1,12 +1,12 @@
 <template lang="pug">
-  span
-    v-footer(padless)
+  .row-2.row-span-1.col-full.full-width
+    v-footer.pad-under-max(padless)
       v-card.max-pg-width.d-flex.align-center.justify-start.flex-wrap.px-2(tile elevation="0")
         .cell.copy
-          sub &copy; 2015-{{ year }}. Made by Erik Olsen
+          sub &copy; 2015 - {{ year }}. Made by Erik Olsen
         .cell
           my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" :hide-text='true' type="flat")
-    v-bottom-navigation(fixed bottom v-show="$vuetify.breakpoint.xsOnly")
+    v-bottom-navigation(fixed bottom v-show="")
       my-menu.nav-main.menu--main.d-flex.justify-center.full-width(:menu="menus.main" :hide-text='true' type="mobile")
 </template>
 
@@ -14,7 +14,7 @@
 import MyMenu from '~/components/Menu'
 export default {
   name: 'AppFooter',
-  components: {MyMenu},
+  components: { MyMenu },
   computed: {
     menus () {
       return this.$store.state.menus
@@ -28,6 +28,7 @@ export default {
 
 <style lang="scss">
 footer.v-footer {
+  height:100%;
   &.theme--dark {
     background-color: #424242;
   }

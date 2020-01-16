@@ -1,24 +1,23 @@
 <template lang="pug">
   section.contact
-    .wrapper.eo-flex.center
-      .form-container
-        v-form(ref='form' v-model='valid' lazy-validation='')
-          h2 Drop me a Note!
-          .eo-flex.wrap.contact-info
-            .cell.eo-flex.a-center.inline.fa.fa-phone.color.blk
-              span.screen-reader Phone Number
-              img.txt(src='~/assets/img/phone.png', alt="Phone Number")
-            .cell.eo-flex.a-center.inline.fa.fa-envelope-o
-              span.screen-reader E-Mail Address
-              img.txt(src='~/assets/img/email.png', alt="Email")
-          v-text-field(outlined v-model='visitor.name' :rules='nameRules' label='Name' required)
-          v-text-field(outlined v-model='visitor.email' :rules='emailRules' label='E-mail' required)
-          v-text-field(outlined v-model='visitor.phone' :rules='phoneRules' label='Phone')
-          v-textarea(outlined v-model='visitor.message' :rules='messageRules' label='Message' required)
-          v-btn.mr-4.bold(outlined :disabled='!valid' color='success' @click='submitForm')
-            | Send
-          v-btn.mr-4.bold(outlined color='error' @click='reset')
-            | Clear   
+    .form-container
+      v-form(ref='form' v-model='valid' lazy-validation='')
+        h2 Drop me a Note!
+        .eo-flex.wrap.contact-info
+          .cell.eo-flex.a-center.inline.fa.fa-phone.color.blk
+            span.screen-reader Phone Number
+            img.txt(src='~/assets/img/phone.png', alt="Phone Number")
+          .cell.eo-flex.a-center.inline.fa.fa-envelope-o
+            span.screen-reader E-Mail Address
+            img.txt(src='~/assets/img/email.png', alt="Email")
+        v-text-field(outlined v-model='visitor.name' :rules='nameRules' label='Name' required)
+        v-text-field(outlined v-model='visitor.email' :rules='emailRules' label='E-mail' required)
+        v-text-field(outlined v-model='visitor.phone' :rules='phoneRules' label='Phone')
+        v-textarea(outlined v-model='visitor.message' :rules='messageRules' label='Message' required)
+        v-btn.mr-4.bold(outlined :disabled='!valid' color='success' @click='submitForm')
+          | Send
+        v-btn.mr-4.bold(outlined color='error' @click='reset')
+          | Clear   
 </template>
 
 <script>
@@ -82,7 +81,7 @@ export default {
           this.status =
             "Thanks for sending me a message! I'll get in touch with you ASAP. :)"
           console.log('Promise Sucess', res)
-          this.resetForm()
+          this.resetForm(200)
         })
         .catch((err) => {
           this.status =
@@ -91,25 +90,26 @@ export default {
           this.resetForm()
         })
     },
-    resetForm () {
+    resetForm (time) {
+      time = time || 10000
       this.visitor = { name: '', email: '', message: '', phone: '' }
       this.showErrors = false
-      const that = this
-      setTimeout(() => {
-        that.status = ''
-      }, 10000)
-    },
-    checkField (e) {
-      // console.log(_invalid, _val);
-      // fields.phone && fields.phone.invalid
-      if (e.type == 'focus') e.target.nextSibling.classList.add('slide-up')
-      if (e.type == 'blur' && e.target.value == '') { e.target.nextSibling.classList.remove('slide-up') }
+      setTimeout(function () {
+        this.status = ''
+      }, time)
     }
+    // checkField (e) {
+    //   // console.log(_invalid, _val);
+    //   // fields.phone && fields.phone.invalid
+    //   if (e.type === 'focus') e.target.nextSibling.classList.add('slide-up')
+    //   if (e.type === 'blur' && e.target.value === '') { e.target.nextSibling.classList.remove('slide-up') }
+    // }
   }
 }
 </script>
 
 <style lang="scss">
+.form-container{@include set-max-width(500px)}
 .contact-info {
   position: relative;
   z-index: 12;
