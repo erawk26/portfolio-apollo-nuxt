@@ -9,16 +9,15 @@
       .title-wrapper.d-flex.align-end.justify-space-between
         .cell.eo-flex.a-end
           h1.display-2 {{ project.title }}
-          app-link(v-for="(link,i) in project.links" :key="'link-'+ i + 1" hide-text :title="link.title||link.text||'Visit Site'" :text="link.text||link.title||'Visit Site'" :href="link.url" :icon="link.icon||'mdi-link'" target="_blank")
+          app-link.mx-4(v-for="(link,i) in project.links" :key="'link-'+ i + 1" hide-text :title="link.title||link.text||'Visit Site'" :text="link.text||link.title||'Visit Site'" :href="link.url" :icon="link.icon||'mdi-link'" target="_blank")
         small.counter.flex-shrink-0(@click="updatePage(looper(1))") {{keys.indexOf(project.slug) + 1}} / {{keys.length}}
           nuxt-link(:to="looper(1)")
             v-icon chevron_right
-      v-divider
+      v-divider.my-3
       .eo-flex.wrap.j-center.a-start
         .cell.alpha.mt-2
           p.mt-0 {{ project.body }}
         .cell.omega
-          a.external-link(v-if="project.links" v-for="link in project.links" :href="link.url" :title="link.title||link.text" target="_blank") {{link.text}}    
           .eo-flex.wrap.skills.mt-2(v-if="project.skills")
             small.full-width Skills:
             v-chip.mr-1.mb-1(small :to="'/projects/by-skill/'+skill.slug" ripple v-for="(skill, i) in project.skills" :key="'skill-'+i+1") {{skill.title}}
