@@ -65,6 +65,15 @@ export const mutations = {
   addMenu (state, payload) {
     state.menus[payload.key] = payload.menu
   },
+  addSubmenu (state, payload) {
+    const i = state.menus.main.map(x => x.to).indexOf(payload.key)
+    state.menus.main[i]['submenu'] = payload.menu.map(x => ({
+      external: false,
+      icon: null,
+      title: x.title,
+      to: payload.key + '/' + x.slug
+    }))
+  },
   addBase (state, payload) {
     state[payload.key] = payload[payload.key]
   }

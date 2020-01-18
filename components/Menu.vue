@@ -1,14 +1,17 @@
 <template lang="pug">
   v-list(:dense="true" :color="color")
     v-list-item.nav-item.uc(v-for='(item, i) in menu' :key='i' :to="item.to" :href="item.href" link :nuxt="!item.external" :target="item.external?'_blank':'_self'" :title="item.title")
-      template(v-if="type=='flat'")  
+      //FLAT MENU HERE
+      template(v-if="type=='flat'")
         v-list-item-action(:class="{'no-text':hideText }")
           v-icon {{item.icon}}
         v-list-item-content(:class="{'visually-hidden':hideText }")
           v-list-item-title {{item.title}}
+      // MOBILE VIEW HERE
       .full-width.d-flex.flex-column.align-center(v-else-if="type == 'mobile'" active='')
         v-icon.d-block {{item.icon}}
         span {{item.title}}
+      // DROPDOWN MENU HERE  
       v-list-group.flex-grow-1(v-else :prepend-icon="item.icon" :append-icon="!item.submenu?'':'expand_more'")
         template(v-slot:activator)
           v-list-item-content()
