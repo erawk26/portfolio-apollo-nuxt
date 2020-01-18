@@ -1,6 +1,6 @@
 <template lang="pug">
   v-navigation-drawer.nav-main.menu--main.unstyle(v-if="!$vuetify.breakpoint.xsOnly" left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
-      my-menu(type="dropdown" :menu="$store.state.menus.main" :parentState="isMini")
+      my-menu(v-if="!$apolloData.loading" type="dropdown" :menu="$store.state.menus.main" :parentState="isMini")
         template(v-slot:extra)           
           v-list-item
             v-list-item-action.cursor.no-text(@click="changeTheme")
