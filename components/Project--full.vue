@@ -1,5 +1,5 @@
 <template lang="pug">
-  .project-container.max-pg-width(v-touch="{ left: () => swipe('Left'), right: () => swipe('Right'), up: () => swipe('Up'), down: () => swipe('Down')}")
+  .project-container.max-pg-width(v-touch="{ left: () => swipe('Left'), right: () => swipe('Right')}")
     v-breadcrumbs.eo-flex.a-start.j-start.pl-0(:items='crumbs' dense)
       template(v-slot:divider='')
         v-icon mdi-chevron-right
@@ -41,7 +41,7 @@ export default {
   data: () => ({ slideTransition: 'fade', swipeDirection: null, page: null }),
   computed: {
     keys () {
-      return this.$store.state.projects.map(p => p.slug)
+      return this.projects.map(p => p.slug)
     },
     crumbs () {
       return [
@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     paginationChange (num) {
-      const _path = '/projects/' + this.$store.state.projects[num - 1]['slug']
+      const _path = '/projects/' + this.projects[num - 1]['slug']
       this.$router.push({ path: _path })
     },
     updatePage (slug) {

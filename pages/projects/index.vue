@@ -1,8 +1,8 @@
 <template lang="pug">
   v-container.cards(grid-list-lg='')
     v-layout.row.wrap
-      v-flex.li(v-for='project in $store.state.projects' :key='project.id' xs12 sm6 lg4)
-        project.project(:project="project" :projectsArr="$store.state.projects" :isTeaser="true")
+      v-flex.li(v-for='project in projects' :key='project.id' xs12 sm6 lg4)
+        project.project(:project="project" :isTeaser="true")
 </template>
 
 <script>
