@@ -1,17 +1,20 @@
 <template lang="pug">
-    div(v-if="$apolloData.data.skill")
-        h1 {{$apolloData.data.skill.title}}
-        v-container.cards(grid-list-lg)
-          v-layout.row.wrap
-            v-flex.li(v-for='project in $apolloData.data.skill.projects' :key='project.id' xs12 sm6 lg4)
-              project.project(:project="project" :projectsArr="$store.state.projects" :isTeaser="true")
+  span
+    div(v-if="!$apolloData.loading")
+      h1 {{skill.title}}
+      v-container.cards(grid-list-lg)
+        v-layout.row.wrap
+          v-flex.li(v-for='project in skill.projects' :key='project.id' xs12 sm6 lg4)
+            project.project(:project="project" :isTeaser="true")
+    loading(v-else)
 </template>
 
 <script>
 import G from '~/graphql/gql.js'
 import Project from '~/components/Project'
+import Loading from '~/components/Loading'
 export default {
-  components: { Project },
+  components: { Loading, Project },
   apollo: {
     $loadingKey: 'loading',
     skill: {
@@ -22,13 +25,6 @@ export default {
         }
       }
     }
-  },
-  mounted () {
-  },
-  methods: {},
-  computed: {
   }
 }
 </script>
-
-<style scoped></style>

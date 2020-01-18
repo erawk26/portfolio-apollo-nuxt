@@ -2,10 +2,12 @@
   v-img(v-if="imgUrl" :alt="alt" :title="title" :lazy-src="lazyUrl" :src="imgUrl")
     template(v-slot:placeholder)
       v-row.fill-height.ma-0(align='center' justify='center')
-        v-progress-circular(indeterminate color='grey lighten-5')
+        component(:is="imageStyle!=='avatar'?'loading':'v-progress-circular'" :color='$vuetify.theme.currentTheme.primary' indeterminate)
 </template>
 <script>
+import Loading from '~/components/Loading'
 export default {
+  components: {Loading},
   data: () => ({
     resize: '',
     imgWidth: 100,
