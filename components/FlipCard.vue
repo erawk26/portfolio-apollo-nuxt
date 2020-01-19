@@ -6,7 +6,7 @@
         .content.left-text
           h4.uc {{project.title}}
       v-card.card-back.abs-center(ripple :elevation="hover?5:10")
-        .content.eo-flex.col.a-center.j-start.fill.dk-green.center-text
+        .content.eo-flex.col.a-center.j-start.primary.center-text
           h4.uc {{project.title}}
           ul.eo-flex.center.wrap.unstyle.cell.omega
             li.skill(v-for="(skill, i) in project.skills")

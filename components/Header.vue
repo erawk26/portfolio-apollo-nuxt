@@ -1,33 +1,27 @@
 <template lang="pug">
-  v-navigation-drawer.nav-main.menu--main.unstyle(v-if="!$vuetify.breakpoint.xsOnly" left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
+  v-navigation-drawer.nav-main.menu--main.unstyle(v-if="!$vuetify.breakpoint.xsOnly&&!loading" left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
       my-menu(v-if="!$apolloData.loading" type="dropdown" :menu="$store.state.menus.main" :parentState="isMini")
         template(v-slot:extra)           
-          v-list-item
-            v-list-item-action.cursor.no-text(@click="changeTheme")
-              v-icon {{$vuetify.theme.dark?'brightness_4':'brightness_5'}}
-            v-list-item-content.screen-reader
-              v-list-item-title {{$vuetify.theme.dark?'dark':'light'}}
+          theme-toggle
 </template>
 
 <script>
 import MyMenu from '~/components/Menu'
+import ThemeToggle from '~/components/ThemeToggle'
+import Loading from '~/components/Loading'
 export default {
   name: 'AppHeader',
-  components: { MyMenu },
+  components: { Loading, MyMenu, ThemeToggle },
   computed: {},
   methods: {
-    changeTheme () {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-    }
   },
-  data: () => ({ isMini: true }),
+  mounted () {
+    this.$store.commit('addSubmenu', {key: '/projects', menu: this.projects})
+    this.loading = false
+  },
+  data: () => ({ loading: true, isMini: true }),
   watch: {
-    isMini: function () {},
-    projects: function (curr) {
-      if (curr.length) {
-        this.$store.commit('addSubmenu', {key: '/projects', menu: curr})
-      }
-    }
+    isMini: function () {}
   }
 }
 </script>

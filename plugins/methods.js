@@ -10,9 +10,11 @@ Vue.mixin({
   apollo: {
     $loadingKey: 'loading',
     skills: {
+      prefetch: true,
       query: G.queries.skills
     },
     projects: {
+      prefetch: true,
       query: G.queries.projects
     }
   }

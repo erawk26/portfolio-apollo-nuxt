@@ -6,7 +6,7 @@
       h4.charcoal--text Erik Olsen
       h6.charcoal--text Web Developer / Programmer
       p.charcoal--text Hey there, Lets build things together! My passion is creating fast responsive websites and applications. I'm currently based out of Sarasota, FL and Aiken, SC. 
-      nuxt-link.material-icons.mx-1.charcoal--text(to="/projects")
+      nuxt-link.material-icons.mx-1(to="/projects")
         v-icon(large) expand_more
       my-menu.nav-social.menu--social.eo-flex.wrap.center.text-center(:menu="cardMenu" :hide-text='true')
 </template>
@@ -40,9 +40,6 @@ section.intro {
   }
   .nav-social a {
     flex: 0;
-    i {
-      color: $charcoal;
-    }
   }
   .headshot {
     transform: translateY(60px) scaleX(-1) rotate(8deg);

@@ -47,12 +47,6 @@ footer.v-footer {
       flex: 1;
       padding: 0;
       max-width: 75px;
-      &.v-list-item--active {
-        i,
-        span {
-          color: $dk-green;
-        }
-      }
     }
     button.v-btn {
       padding: 0;
