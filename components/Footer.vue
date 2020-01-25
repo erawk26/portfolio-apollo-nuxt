@@ -6,7 +6,7 @@
           sub &copy; 2015 - {{ year }}. Made by Erik Olsen
         .cell
           my-menu.nav-footer.menu--footer.d-flex.justify-start(:menu="menus.footer" :hide-text='true' type="flat")
-    v-bottom-navigation(fixed bottom v-show="")
+    v-bottom-navigation(fixed bottom v-if="$vuetify.breakpoint.xsOnly&&!loading")
       my-menu.nav-main.menu--main.d-flex.justify-center.full-width(:menu="menus.main" :hide-text='true' type="mobile")
 </template>
 
