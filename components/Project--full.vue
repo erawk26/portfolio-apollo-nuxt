@@ -1,5 +1,5 @@
 <template lang="pug">
-  .project-container.max-pg-width(v-touch="{ left: () => swipe('Left'), right: () => swipe('Right')}")
+  .project-container.max-pg-width(v-if="!$apolloData.loading" v-touch="{ left: () => swipe('Left'), right: () => swipe('Right')}")
     v-breadcrumbs.eo-flex.a-start.j-start.pl-0(:items='crumbs' dense)
       template(v-slot:divider='')
         v-icon mdi-chevron-right
@@ -10,8 +10,8 @@
         .cell.eo-flex.a-end
           h1.display-2 {{ project.title }}
           app-link.mx-4(v-for="(link,i) in project.links" :key="'link-'+ i + 1" hide-text :title="link.title||link.text||'Visit Site'" :text="link.text||link.title||'Visit Site'" :href="link.url" :icon="link.icon||'mdi-link'" target="_blank")
-        small.counter.flex-shrink-0(@click="updatePage(looper(1))") {{keys.indexOf(project.slug) + 1}} / {{keys.length}}
-          nuxt-link(:to="looper(1)")
+        small.counter.flex-shrink-0(@click="updatePage(looper(1,keys))") {{keys.indexOf(project.slug) + 1}} / {{keys.length}}
+          nuxt-link(:to="looper(1,keys)")
             v-icon chevron_right
       v-divider.my-3
       .eo-flex.wrap.j-center.a-start
@@ -41,7 +41,7 @@ export default {
   data: () => ({ slideTransition: 'fade', swipeDirection: null, page: null }),
   computed: {
     keys () {
-      return this.projects.map(p => p.slug)
+      return this.projects ? this.projects.map(k => k.slug) : []
     },
     crumbs () {
       return [
@@ -81,17 +81,12 @@ export default {
     updatePage (slug) {
       this.page = this.keys.indexOf(slug) + 1
     },
-    looper (dir) {
-      const arr = this.keys
-      const len = arr.length
-      return arr[(arr.indexOf(this.$route.params.slug) + ((dir * -1) % len) + len) % len]
-    },
     swipe (dir) {
       this.swipeDirection = dir
       const x = dir === 'Left' || dir === 'Up' ? 1 : -1
       this.slideTransition = x > 0 ? 'slide-left' : 'slide-right'
       this.$router.push({
-        path: '/projects/' + this.looper(x)
+        path: '/projects/' + this.looper(x, this.keys)
       })
     }
   }

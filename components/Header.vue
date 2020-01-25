@@ -2,21 +2,20 @@
   v-navigation-drawer.nav-main.menu--main.unstyle(v-if="!$vuetify.breakpoint.xsOnly&&!loading" left fixed expand-on-hover :mini-variant.sync="isMini" :mini-variant-width="50" permanent floating)
       my-menu(v-if="!$apolloData.loading" type="dropdown" :menu="$store.state.menus.main" :parentState="isMini")
         template(v-slot:extra)           
-          theme-toggle
+          theme-btn
 </template>
 
 <script>
 import MyMenu from '~/components/Menu'
-import ThemeToggle from '~/components/ThemeToggle'
-import Loading from '~/components/Loading'
+import ThemeBtn from '~/components/ThemeToggle'
 export default {
   name: 'AppHeader',
-  components: { Loading, MyMenu, ThemeToggle },
+  components: { MyMenu, ThemeBtn },
   computed: {},
   methods: {
   },
   mounted () {
-    this.$store.commit('addSubmenu', {key: '/projects', menu: this.projects})
+    this.$store.commit('SET_SUBMENU', {key: '/projects', menu: this.projects})
     this.loading = false
   },
   data: () => ({ loading: true, isMini: true }),
