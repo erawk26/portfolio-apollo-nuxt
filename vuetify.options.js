@@ -1,14 +1,18 @@
 export default {
+  defaultAssets: {
+    font: true,
+    icons: 'md'
+  },
   icons: {
-    iconfont: 'md' // default - only for display purposes
+    iconfont: 'md'
   },
   theme: {
     dark: false,
     themes: {
       dark: {
         // primary: '#263238',
-        // primary: '#342a21',
-        primary: '#3caa6b'
+        primary: '#3b8070'
+        // primary: '#3caa6b'
         // accent: '#C67171',
         // secondary: '#26A5B5',
         // success: '#4CAF50',

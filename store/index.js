@@ -35,13 +35,13 @@ export const state = () => ({
       },
       {
         external: true,
-        icon: 'mdi-linkedin-box',
+        icon: 'mdi-linkedin',
         href: 'https://www.linkedin.com/in/erikthedeveloper',
         title: 'LinkedIn'
       },
       {
         external: true,
-        icon: 'mdi-github-circle',
+        icon: 'mdi-github',
         href: 'https://github.com/erawk26',
         title: 'GitHub'
       },
