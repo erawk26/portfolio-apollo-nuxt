@@ -1,7 +1,9 @@
+@import 'font';
+
 .v-application {
   .mdi,
   .material-icons {
-    font-family: 'Material Icons';
+    font-family: "Material Icons";
   }
   font-family: $body-font-family !important;
   .display-1,
@@ -11,7 +13,6 @@
   .headline,
   .title,
   .subtitle-1,
-  .subtitle.display-1,
   .subtitle-2 {
     font-family: $heading-font-family !important;
   }
@@ -20,8 +21,5 @@
   .caption,
   .overline {
     font-family: $body-font-family !important;
-  }
-  [class^='nav-'] {
-    font-family: $heading-font-family;
   }
 }
