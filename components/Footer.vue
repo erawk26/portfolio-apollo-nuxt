@@ -11,24 +11,24 @@
 </template>
 
 <script>
-import MyMenu from '~/components/Menu'
+import MyMenu from "~/components/Menu";
 export default {
-  name: 'AppFooter',
+  name: "AppFooter",
   components: { MyMenu },
   computed: {
-    menus () {
-      return this.$store.state.menus
+    menus() {
+      return this.$store.state.menus;
     },
-    year () {
-      return new Date().getFullYear()
+    year() {
+      return new Date().getFullYear();
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
 footer.v-footer {
-  height:100%;
+  height: 100%;
   &.theme--dark {
     background-color: #424242;
   }

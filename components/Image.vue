@@ -5,50 +5,54 @@
         component(:is="imageStyle!=='avatar'?'loading':'v-progress-circular'" :color='$vuetify.theme.currentTheme.primary' indeterminate)
 </template>
 <script>
-import Loading from '~/components/Loading'
+import Loading from "~/components/Loading";
 export default {
-  components: {Loading},
+  components: { Loading },
+  props: {
+    imageStyle: { type: String, default: "thumb" },
+    handle: { type: String, default: "" },
+    alt: { type: String, default: "" },
+    title: { type: String, default: "" }
+  },
   data: () => ({
-    resize: '',
+    resize: "",
     imgWidth: 100,
     imgHeight: 100
   }),
-  props: {
-    imageStyle: { type: String, default: 'thumb' },
-    handle: { type: String, default: '' },
-    alt: { type: String, default: '' },
-    title: { type: String, default: '' }
-  },
-  mounted () {
-    switch (this.imageStyle) {
-      case 'thumb':
-        this.imgWidth = 100
-        this.imgHeight = 100
-        this.resize = `resize=w:${this.imgWidth},h:${this.imgHeight},fit:crop/`
-        break
-      case 'full':
-        this.imgWidth = 1600
-        this.imgHeight = 900
-        this.resize = `resize=w:${this.imgWidth},h:${this.imgHeight},fit:crop/`
-        break
-      case 'avatar':
-        this.imgWidth = 300
-        this.imgHeight = 300
-        this.resize = `resize=w:${this.imgWidth},h:${this.imgHeight},fit:crop/`
-        break
-      case 'original':
-        this.resize = ''
+  computed: {
+    lazyUrl() {
+      return `http://via.placeholder.com/${this.imgWidth}x${this.imgHeight}`;
+    },
+    imgUrl() {
+      return `https://media.graphcms.com/${this.resize}${this.handle}`;
     }
   },
   watch: {
-    handle () {}
+    handle() {}
   },
-  methods: {},
-  computed: {
-    lazyUrl () { return `http://via.placeholder.com/${this.imgWidth}x${this.imgHeight}` },
-    imgUrl () { return `https://media.graphcms.com/${this.resize}${this.handle}` }
-  }
-}
+  mounted() {
+    switch (this.imageStyle) {
+      case "thumb":
+        this.imgWidth = 100;
+        this.imgHeight = 100;
+        this.resize = `resize=w:${this.imgWidth},h:${this.imgHeight},fit:crop/`;
+        break;
+      case "full":
+        this.imgWidth = 1600;
+        this.imgHeight = 900;
+        this.resize = `resize=w:${this.imgWidth},h:${this.imgHeight},fit:crop/`;
+        break;
+      case "avatar":
+        this.imgWidth = 300;
+        this.imgHeight = 300;
+        this.resize = `resize=w:${this.imgWidth},h:${this.imgHeight},fit:crop/`;
+        break;
+      case "original":
+        this.resize = "";
+    }
+  },
+  methods: {}
+};
 </script>
 
 <style lang="scss"></style>

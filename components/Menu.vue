@@ -31,11 +31,11 @@ export default {
     },
     type: {
       type: String,
-      default: 'flat'
+      default: "flat"
     },
     color: {
       type: String,
-      default: 'transparent'
+      default: "transparent"
     },
     hideText: {
       type: Boolean,
@@ -49,7 +49,7 @@ export default {
   watch: {
     // parentState: (newV, oldV) => //console.log(newV, oldV)
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .v-list-item__action.no-text {

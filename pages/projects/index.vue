@@ -6,19 +6,16 @@
 </template>
 
 <script>
-import Project from '~/components/Project'
+import Project from "~/components/Project";
 export default {
+  components: { Project },
   data: () => ({
     loading: 0
   }),
-  methods: {
-  },
-  components: {Project},
-  mounted () {
-  },
-  computed: {
-  }
-}
+  computed: {},
+  mounted() {},
+  methods: {}
+};
 </script>
 
 <style lang="scss">

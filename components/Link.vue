@@ -9,7 +9,7 @@ export default {
   props: {
     target: {
       type: String,
-      default: '_blank'
+      default: "_blank"
     },
     icon: {
       type: String,
@@ -17,11 +17,11 @@ export default {
     },
     href: {
       type: String,
-      default: ''
+      default: ""
     },
     title: {
       type: String,
-      default: ''
+      default: ""
     },
     hideText: {
       type: Boolean,
@@ -29,10 +29,10 @@ export default {
     },
     text: {
       type: String,
-      default: 'Visit Site'
+      default: "Visit Site"
     }
   }
-}
+};
 </script>
 <style lang="scss">
 .link-component .mdi-link {

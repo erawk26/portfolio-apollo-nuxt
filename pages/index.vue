@@ -12,21 +12,21 @@
 </template>
 
 <script>
-import MyMenu from '~/components/Menu'
-import AppImg from '~/components/Image'
+import MyMenu from "~/components/Menu";
+import AppImg from "~/components/Image";
 export default {
+  name: "HomePage",
   components: { AppImg, MyMenu },
-  name: 'HomePage',
   data: () => ({
     loading: 0
   }),
-  methods: {},
   computed: {
-    cardMenu () {
-      return this.$store.state.menus.footer // .slice(1)
+    cardMenu() {
+      return this.$store.state.menus.footer; // .slice(1)
     }
-  }
-}
+  },
+  methods: {}
+};
 </script>
 
 <style lang="scss">

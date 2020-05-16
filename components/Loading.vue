@@ -9,24 +9,26 @@
 
 <script>
 export default {
-  computed: {
-    bgColor () { return this.color || this.$vuetify.theme.currentTheme.primary }
-  },
   props: {
     color: {
       default: null,
       type: String
     }
+  },
+  computed: {
+    bgColor() {
+      return this.color || this.$vuetify.theme.currentTheme.primary;
+    }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .wrapper {
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 }
 .loading {
   display: inline-block;

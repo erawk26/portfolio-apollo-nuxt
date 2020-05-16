@@ -4,10 +4,10 @@
 </template>
 
 <script>
-import TeaserCard from '~/components/FlipCard'
-import FullCard from '~/components/Project--full'
+import TeaserCard from "~/components/FlipCard";
+import FullCard from "~/components/Project--full";
 export default {
-  components: {'project-teaser': TeaserCard, 'project-full': FullCard},
+  components: { "project-teaser": TeaserCard, "project-full": FullCard },
   props: {
     isTeaser: { type: Boolean, default: false },
     project: {
@@ -15,8 +15,7 @@ export default {
       default: () => ({})
     }
   },
-  mounted () {
-  },
-  computed: {}
-}
+  computed: {},
+  mounted() {}
+};
 </script>

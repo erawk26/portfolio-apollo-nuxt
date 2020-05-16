@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import AppLink from '~/components/Link'
-import AppImg from '~/components/Image'
+import AppLink from "~/components/Link";
+import AppImg from "~/components/Image";
 export default {
-  name: 'ProjectFull',
+  name: "ProjectFull",
   components: { AppLink, AppImg },
   props: {
     hover: { type: Boolean, default: false },
@@ -38,59 +38,59 @@ export default {
       default: () => ({})
     }
   },
-  data: () => ({ slideTransition: 'fade', swipeDirection: null, page: null }),
+  data: () => ({ slideTransition: "fade", swipeDirection: null, page: null }),
   computed: {
-    keys () {
-      return this.projects ? this.projects.map((k) => k.slug) : []
+    keys() {
+      return this.projects ? this.projects.map(k => k.slug) : [];
     },
-    crumbs () {
+    crumbs() {
       return [
         {
-          text: 'Home',
+          text: "Home",
           disabled: false,
-          href: '/'
+          href: "/"
         },
         {
-          text: 'Projects',
+          text: "Projects",
           disabled: false,
-          href: '/projects'
+          href: "/projects"
         },
         {
           text: this.project.title,
           disabled: true,
-          href: '/projects/' + this.$route.params.slug
+          href: "/projects/" + this.$route.params.slug
         }
-      ]
+      ];
     }
   },
   watch: {
-    page (curr, prev) {
+    page(curr, prev) {
       if (prev && prev !== curr) {
-        this.paginationChange(curr)
+        this.paginationChange(curr);
       }
     }
   },
-  mounted () {
-    this.page = this.keys.indexOf(this.$route.params.slug) + 1
+  mounted() {
+    this.page = this.keys.indexOf(this.$route.params.slug) + 1;
   },
   methods: {
-    paginationChange (num) {
-      const _path = '/projects/' + this.projects[num - 1]['slug']
-      this.$router.push({ path: _path })
+    paginationChange(num) {
+      const _path = "/projects/" + this.projects[num - 1].slug;
+      this.$router.push({ path: _path });
     },
-    updatePage (slug) {
-      this.page = this.keys.indexOf(slug) + 1
+    updatePage(slug) {
+      this.page = this.keys.indexOf(slug) + 1;
     },
-    swipe (dir) {
-      this.swipeDirection = dir
-      const x = dir === 'Left' || dir === 'Up' ? 1 : -1
-      this.slideTransition = x > 0 ? 'slide-left' : 'slide-right'
+    swipe(dir) {
+      this.swipeDirection = dir;
+      const x = dir === "Left" || dir === "Up" ? 1 : -1;
+      this.slideTransition = x > 0 ? "slide-left" : "slide-right";
       this.$router.push({
-        path: '/projects/' + this.looper(x, this.keys)
-      })
+        path: "/projects/" + this.looper(x, this.keys)
+      });
     }
   }
-}
+};
 </script>
 <style lang="scss">
 .skills {

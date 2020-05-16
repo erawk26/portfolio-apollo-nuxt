@@ -1,10 +1,9 @@
-
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 export default {
   queries: {
     project: () => gql`
-      query project($slug: String!){
-        project(where: {slug: $slug}) {
+      query project($slug: String!) {
+        project(where: { slug: $slug }) {
           id
           date
           title
@@ -17,7 +16,7 @@ export default {
             handle
             id
           }
-          links{
+          links {
             id
             url
             title
@@ -33,29 +32,31 @@ export default {
         }
       }
     `,
-    projects: () => gql`{
-      projects {
-        id
-        date
-        title
-        body
-        slug
-        mainImage {
-          url
-          width
-          height
-          handle
+    projects: () => gql`
+      {
+        projects {
           id
-        }
-        skills {
-          slug
+          date
           title
+          body
+          slug
+          mainImage {
+            url
+            width
+            height
+            handle
+            id
+          }
+          skills {
+            slug
+            title
+          }
         }
       }
-    }`,
+    `,
     skill: () => gql`
-      query skill($slug: String!){
-        skill(where: {slug: $slug}) {
+      query skill($slug: String!) {
+        skill(where: { slug: $slug }) {
           title
           slug
           projects {
@@ -87,17 +88,19 @@ export default {
         }
       }
     `,
-    skills: () => gql`{
-      skills {
-        id
-        slug
-        title
-        projects {
+    skills: () => gql`
+      {
+        skills {
           id
           slug
+          title
+          projects {
+            id
+            slug
+          }
         }
       }
-    }`
+    `
   },
   mutations: {
     upsertProject: () => gql`
@@ -112,4 +115,4 @@ export default {
       }
     `
   }
-}
+};
