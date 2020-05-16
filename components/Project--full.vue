@@ -41,7 +41,7 @@ export default {
   data: () => ({ slideTransition: 'fade', swipeDirection: null, page: null }),
   computed: {
     keys () {
-      return this.projects ? this.projects.map(k => k.slug) : []
+      return this.projects ? this.projects.map((k) => k.slug) : []
     },
     crumbs () {
       return [
