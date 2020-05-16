@@ -20,27 +20,24 @@
     "graphql": "^0.11.7",
     "graphql-tag": "^2.10.1",
     "gsap": "^3.0.5",
-    "nuxt": "^2.3.4",
-    "vuetify": "^2.2.3"
+    "nuxt": "^2.3.4"
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config": "^1.0.1",
+    "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/google-analytics": "^2.2.2",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/vuetify": "^1.9.1",
-    "babel-eslint": "^7.2.3",
-    "css-loader": "^3.4.1",
-    "eslint": "^4.3.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-html": "^3.1.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.0.1",
     "node-sass": "^4.13.0",
-    "pug": "^2.0.3",
+    "prettier": "^1.16.4",
+    "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
-    "sass-loader": "^7.3.1",
+    "sass-loader": "^8.0.2",
     "vue-loader": "^15.8.3"
   }
 }
