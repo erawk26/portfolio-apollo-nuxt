@@ -47,6 +47,7 @@ collections:
         searchFields: ["title"]
         valueField: "title"
         displayFields: ["title"]
+        multiple: true
       - label: "Media"
         name: "media"
         widget: "list"
@@ -56,6 +57,13 @@ collections:
           - { label: 'Alt', name: 'alt', required: true }
           - { label: 'Title', name: 'title', required: false }
           - { label: 'Caption', name: 'caption', widget: 'markdown', required: false }
+      - label: "Links"
+        name: "links"
+        widget: "list"
+        fields:
+          - { label: 'Title', name: 'title', required: false }
+          - { label: 'Url', name: 'video', widget: 'string', required: true}
+          - { label: 'Icon', name: 'image', widget: 'image', required: false}
 #   - name: "album" # Used in routes, e.g., /admin/collections/blog
 #     label: "Album" # Used in the UI
 #     format: 'json'
