@@ -8,60 +8,60 @@
 </template>
 
 <script>
-import AppHeader from "../components/Header";
-import AppFooter from "../components/Footer";
+import AppHeader from '../components/Header'
+import AppFooter from '../components/Footer'
 export default {
   components: { AppHeader, AppFooter },
   data() {
     return {
-      scrolled: "top"
-    };
+      scrolled: 'top'
+    }
   },
   computed: {},
   watch: {},
   mounted() {
-    window.addEventListener("scroll", this.debounce(this.onScroll, 200));
+    window.addEventListener('scroll', this.debounce(this.onScroll, 200))
   },
   methods: {
     childRoute(href) {
-      return this.$route.path.split("/").includes(href.replace("/", ""));
+      return this.$route.path.split('/').includes(href.replace('/', ''))
     },
     onScroll() {
-      const threshhold = 100;
+      const threshhold = 100
       if (window.pageYOffset < threshhold) {
-        this.scrolled = "top";
+        this.scrolled = 'top'
       } else if (
         window.innerHeight + window.pageYOffset + 1 >=
         document.body.offsetHeight
       ) {
-        this.scrolled = "bottom";
+        this.scrolled = 'bottom'
       } else {
-        this.scrolled = "middle";
+        this.scrolled = 'middle'
       }
     },
     debounce(func, wait, immediate) {
-      let timeout;
+      let timeout
       return function() {
-        const context = this;
-        const args = arguments;
+        const context = this
+        const args = arguments
         const later = function() {
-          timeout = null;
-          if (!immediate) func.apply(context, args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-      };
+          timeout = null
+          if (!immediate) func.apply(context, args)
+        }
+        const callNow = immediate && !timeout
+        clearTimeout(timeout)
+        timeout = setTimeout(later, wait)
+        if (callNow) func.apply(context, args)
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
-@import "~/assets/scss/_atomic.scss";
-@import "~/assets/scss/_animations.scss";
-@import "~/assets/scss/_global.scss";
+@import '~/assets/scss/_atomic.scss';
+@import '~/assets/scss/_animations.scss';
+@import '~/assets/scss/_global.scss';
 .main-layout {
   grid-template-rows: 1fr 65px;
 

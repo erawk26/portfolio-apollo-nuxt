@@ -13,11 +13,11 @@
               v-chip.ma-1(color="charcoal" text-color="white") {{ skill.title }}
 </template>
 <script>
-import { gsap } from "gsap";
-import Link from "~/components/Link.vue";
-import AppImg from "~/components/Image";
+import { gsap } from 'gsap'
+import Link from '~/components/Link.vue'
+import AppImg from '~/components/Image'
 export default {
-  name: "FlipCard",
+  name: 'FlipCard',
   components: { AppImg, Link },
   props: {
     hover: { type: Boolean, default: false },
@@ -30,31 +30,31 @@ export default {
   watch: {
     hover(newVal, oldVal) {
       if (newVal) {
-        this.animation(1);
+        this.animation(1)
       } else {
-        this.animation(-1);
+        this.animation(-1)
       }
     }
   },
   mounted() {
-    gsap.set(this.$el.querySelector(".card-front"), { rotationY: 0 });
-    gsap.set(this.$el.querySelector(".card-back"), { rotationY: -180 });
+    gsap.set(this.$el.querySelector('.card-front'), { rotationY: 0 })
+    gsap.set(this.$el.querySelector('.card-back'), { rotationY: -180 })
   },
   methods: {
     animation(dir) {
-      const frontRotation = dir > 0 ? 180 : 0;
-      const backRotation = dir > 0 ? 0 : -180;
-      gsap.to(this.$el.querySelector(".card-front"), {
+      const frontRotation = dir > 0 ? 180 : 0
+      const backRotation = dir > 0 ? 0 : -180
+      gsap.to(this.$el.querySelector('.card-front'), {
         rotationY: frontRotation,
         duration: 1
-      });
-      gsap.to(this.$el.querySelector(".card-back"), {
+      })
+      gsap.to(this.$el.querySelector('.card-back'), {
         rotationY: backRotation,
         duration: 1
-      });
+      })
     }
   }
-};
+}
 </script>
 <style lang="scss">
 /// FLIP ANIMATION STYLING GOES UNDER HERE ///
@@ -79,7 +79,7 @@ export default {
       position: absolute;
       width: 100%;
       height: 100%;
-      content: "";
+      content: '';
       top: 0;
       left: 0;
       z-index: 0;

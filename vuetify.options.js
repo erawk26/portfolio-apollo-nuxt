@@ -1,17 +1,17 @@
 export default {
   defaultAssets: {
     font: true,
-    icons: "md"
+    icons: 'md'
   },
   icons: {
-    iconfont: "md"
+    iconfont: 'md'
   },
   theme: {
     dark: false,
     themes: {
       dark: {
         // primary: '#263238',
-        primary: "#3b8070"
+        primary: '#3b8070'
         // primary: '#3caa6b'
         // accent: '#C67171',
         // secondary: '#26A5B5',
@@ -22,7 +22,7 @@ export default {
         // primary: '#3b8070'
       },
       light: {
-        primary: "#3b8070"
+        primary: '#3b8070'
         // accent: '#F44336',
         // secondary: '#757575',
         // accent: '#0277BD',
@@ -34,4 +34,4 @@ export default {
       }
     }
   }
-};
+}

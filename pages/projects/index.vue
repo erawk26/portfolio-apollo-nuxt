@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Project from "~/components/Project";
+import Project from '~/components/Project'
 export default {
   components: { Project },
   data: () => ({
@@ -15,7 +15,7 @@ export default {
   computed: {},
   mounted() {},
   methods: {}
-};
+}
 </script>
 
 <style lang="scss">

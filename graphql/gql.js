@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag'
 export default {
   queries: {
     project: () => gql`
@@ -115,4 +115,4 @@ export default {
       }
     `
   }
-};
+}

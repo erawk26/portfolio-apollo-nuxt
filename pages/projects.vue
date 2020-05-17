@@ -4,10 +4,10 @@
 
 <script>
 export default {
-  name: "ProductsPage",
+  name: 'ProductsPage',
   mounted() {},
   methods: {}
-};
+}
 </script>
 
 <style lang="scss"></style>

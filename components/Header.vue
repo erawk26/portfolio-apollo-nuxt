@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import MyMenu from "~/components/Menu";
-import ThemeBtn from "~/components/ThemeToggle";
+import MyMenu from '~/components/Menu'
+import ThemeBtn from '~/components/ThemeToggle'
 export default {
-  name: "AppHeader",
+  name: 'AppHeader',
   components: { MyMenu, ThemeBtn },
   data: () => ({ loading: true, isMini: true }),
   computed: {},
@@ -17,14 +17,14 @@ export default {
     isMini() {}
   },
   mounted() {
-    this.$store.commit("SET_SUBMENU", {
-      key: "/projects",
+    this.$store.commit('SET_SUBMENU', {
+      key: '/projects',
       menu: this.projects
-    });
-    this.loading = false;
+    })
+    this.loading = false
   },
   methods: {}
-};
+}
 </script>
 
 <style lang="scss">

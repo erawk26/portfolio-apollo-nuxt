@@ -1,22 +1,22 @@
 /* eslint-disable standard/computed-property-even-spacing */
-import Vue from "vue";
-import G from "~/graphql/gql.js";
+import Vue from 'vue'
+import G from '~/graphql/gql.js'
 Vue.mixin({
   methods: {
     looper(dir, arr) {
-      const len = arr.length;
+      const len = arr.length
       return arr[
         (arr.indexOf(this.$route.params.slug) + ((dir * -1) % len) + len) % len
-      ];
+      ]
     },
-    machine_readable: val =>
+    machine_readable: (val) =>
       val
         .toLowerCase()
-        .replace(/[^\w ]+/g, "")
-        .replace(/ +/g, "-")
+        .replace(/[^\w ]+/g, '')
+        .replace(/ +/g, '-')
   },
   apollo: {
-    $loadingKey: "loading",
+    $loadingKey: 'loading',
     skills: {
       prefetch: true,
       query: G.queries.skills
@@ -26,4 +26,4 @@ Vue.mixin({
       query: G.queries.projects
     }
   }
-});
+})

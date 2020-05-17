@@ -10,21 +10,21 @@
 </template>
 
 <script>
-import G from "~/graphql/gql.js";
-import Project from "~/components/Project";
-import Loading from "~/components/Loading";
+import G from '~/graphql/gql.js'
+import Project from '~/components/Project'
+import Loading from '~/components/Loading'
 export default {
   components: { Loading, Project },
   apollo: {
-    $loadingKey: "loading",
+    $loadingKey: 'loading',
     skill: {
       query: G.queries.skill,
       variables() {
         return {
           slug: this.$route.params.slug
-        };
+        }
       }
     }
   }
-};
+}
 </script>
