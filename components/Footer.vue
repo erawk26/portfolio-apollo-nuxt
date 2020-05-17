@@ -11,19 +11,19 @@
 </template>
 
 <script>
-import MyMenu from "~/components/Menu";
+import MyMenu from '~/components/Menu'
 export default {
-  name: "AppFooter",
+  name: 'AppFooter',
   components: { MyMenu },
   computed: {
     menus() {
-      return this.$store.state.menus;
+      return this.$store.state.menus
     },
     year() {
-      return new Date().getFullYear();
+      return new Date().getFullYear()
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

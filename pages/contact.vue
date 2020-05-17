@@ -24,81 +24,80 @@
 /* eslint-disable no-console */
 export default {
   transition(to, from) {
-    if (!from) return "slide-up";
-    return +to.query.page < +from.query.page ? "slide-down" : "slide-up";
+    if (!from) return 'slide-up'
+    return +to.query.page < +from.query.page ? 'slide-down' : 'slide-up'
   },
   data: () => ({
-    visitor: { name: "", email: "", message: "", phone: "" },
+    visitor: { name: '', email: '', message: '', phone: '' },
     url:
-      "https://zepn0cfhee.execute-api.us-east-1.amazonaws.com/prod/email/send",
-    nameRules: [v => !!v || "Name is required"],
+      'https://zepn0cfhee.execute-api.us-east-1.amazonaws.com/prod/email/send',
+    nameRules: [(v) => !!v || 'Name is required'],
     emailRules: [
-      v => !!v || "E-mail is required",
-      v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+      (v) => !!v || 'E-mail is required',
+      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid'
     ],
     phoneRules: [
-      v => {
-        const re = /^(1?(-?\d{3})-?)?(\d{3})(-?\d{4})$/;
-        return !v || re.test(v) || "Phone must be valid";
+      (v) => {
+        const re = /^(1?(-?\d{3})-?)?(\d{3})(-?\d{4})$/
+        return !v || re.test(v) || 'Phone must be valid'
       }
     ],
     messageRules: [
-      v => !!v || "Message is required",
-      v => (v && v.length >= 10) || "Message must be more than 10 characters"
+      (v) => !!v || 'Message is required',
+      (v) => (v && v.length >= 10) || 'Message must be more than 10 characters'
     ],
     valid: false,
-    status: ""
+    status: ''
   }),
   methods: {
     reset() {
-      this.$refs.form.reset();
+      this.$refs.form.reset()
     },
     submitForm(e) {
-      e.preventDefault();
+      e.preventDefault()
       if (this.$refs.form.validate()) {
         this.sendEmail(
-          this.visitor.email + "sent you an email from your website!",
+          this.visitor.email + 'sent you an email from your website!',
           {
             name: this.visitor.name,
             email: this.visitor.email,
-            content: this.visitor.message + "\n" + this.visitor.phone
+            content: this.visitor.message + '\n' + this.visitor.phone
           }
-        );
-        console.log("Form Submitted!");
+        )
+        console.log('Form Submitted!')
       }
     },
     sendEmail(subject, body) {
-      console.log("sendmail fired", subject, body);
+      console.log('sendmail fired', subject, body)
       return fetch(this.url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(body)
       })
-        .then(response => response.json())
-        .then(res => {
+        .then((response) => response.json())
+        .then((res) => {
           this.status =
-            "Thanks for sending me a message! I'll get in touch with you ASAP. :)";
-          console.log("Promise Sucess", res);
-          this.resetForm(200);
+            "Thanks for sending me a message! I'll get in touch with you ASAP. :)"
+          console.log('Promise Sucess', res)
+          this.resetForm(200)
         })
-        .catch(err => {
+        .catch((err) => {
           this.status =
-            "I'm sorry There was an error with sending your message. :(\n" +
-            err;
-          console.log(err);
-          this.resetForm();
-        });
+            "I'm sorry There was an error with sending your message. :(\n" + err
+          console.log(err)
+          this.resetForm()
+        })
     },
     resetForm(time) {
-      time = time || 10000;
-      this.visitor = { name: "", email: "", message: "", phone: "" };
-      this.showErrors = false;
+      time = time || 10000
+      this.visitor = { name: '', email: '', message: '', phone: '' }
+      this.showErrors = false
       setTimeout(function() {
-        this.status = "";
-      }, time);
+        this.status = ''
+      }, time)
     }
     // checkField (e) {
     //   // console.log(_invalid, _val);
@@ -107,7 +106,7 @@ export default {
     //   if (e.type === 'blur' && e.target.value === '') { e.target.nextSibling.classList.remove('slide-up') }
     // }
   }
-};
+}
 </script>
 
 <style lang="scss">

@@ -17,10 +17,10 @@ export default {
   },
   computed: {
     bgColor() {
-      return this.color || this.$vuetify.theme.currentTheme.primary;
+      return this.color || this.$vuetify.theme.currentTheme.primary
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .wrapper {
