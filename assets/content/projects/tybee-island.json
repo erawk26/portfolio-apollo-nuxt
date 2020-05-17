@@ -1,0 +1,17 @@
+{
+  "title": "Tybee Island",
+  "body": "This was one of my first builds at Miles Partnership. It's a really clean, interactive, Destination Marketing site built in Drupal 7. We used a lot of custom modules and features and relied heavily on component based CMS building. This project was a ton of fun to help familiarize myself with destination style marketing!",
+  "skills": ["Server Side Rendering", "Drupal 8"],
+  "media": [
+    {
+      "image": "/img/tybee.png",
+      "alt": "Visit Tybee Island - Website"
+    }
+  ],
+  "links": [
+    {
+      "title": "Visit Tybee Island - Website",
+      "video": "https://visittybee.com"
+    }
+  ]
+}

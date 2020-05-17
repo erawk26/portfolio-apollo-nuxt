@@ -1,10 +1,7 @@
 {
-  "title": "dsfsdf",
+  "title": "La Brea Bakery",
   "body": "sdffsd",
-  "skills": [
-    "Server Side Rendering",
-    "Drupal 8"
-  ],
+  "skills": ["Server Side Rendering", "Drupal 8"],
   "media": [
     {
       "image": "/img/labrea.jpg",
@@ -13,7 +10,7 @@
   ],
   "links": [
     {
-      "title": "Labrea Site",
+      "title": "Labrea Website",
       "video": "https://labreabakery.com"
     }
   ]
