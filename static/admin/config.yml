@@ -9,7 +9,7 @@ collections:
   - name: 'news'
     label: 'News'
     format: 'json'
-    folder: 'assets/content/news/{{month}}-{{year}}'
+    folder: 'assets/content/news'
     create: true
     slug: '{{slug}}'
     editor:
@@ -39,63 +39,83 @@ collections:
       preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Menu Icon', name: 'icon', widget: 'string', default: 'home', required: false }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - label: "Album Style"
-        name: "albumStyle"
-        widget: "select"
-        options:
-          - { label: "Full Width", value: 'hero' }
-          - { label: "Left", value: 'left' }
-          - { label: "Right", value: 'right' }
-          - { label: "Center", value: 'center' }
-      - label: "Album"
-        name: "albumRel"
+      - label: "Skills"
+        name: "skills"
         widget: "relation"
-        collection: "album"
-        searchFields: ["title", "desc"]
+        collection: "skills"
+        searchFields: ["title"]
         valueField: "title"
         displayFields: ["title"]
-        required: true
-      - label: "Post Body Components"
-        name: "sections"
+      - label: "Media"
+        name: "media"
         widget: "list"
-        types:
-          - label: "Carousel"
-            name: "carousel"
-            widget: object
-            fields:
-              - label: "Album Style"
-                name: "albumStyle"
-                widget: "select"
-                options:
-                  - { label: "Full Width", value: 'hero' }
-                  - { label: "Left", value: 'left' }
-                  - { label: "Right", value: 'right' }
-                  - { label: "Center", value: 'center' }
-              - label: "Album"
-                name: "albumRel"
-                widget: "relation"
-                collection: "album"
-                searchFields: ["title", "desc"]
-                valueField: "title"
-                displayFields: ["title"]
-                required: true
-          - label: "Testimonial"
-            name: "testimonial"
-            widget: object
-            fields:
-              - label: "Testimonial"
-                name: "testimonialRel"
-                widget: "relation"
-                collection: "testimonials"
-                searchFields: ["title", "desc"]
-                valueField: "title"
-                displayFields: ["title"]
-                required: true      
-          - label: "Spotlight"
-            name: "spotlight"
-            widget: object
-            fields:
-              - {label: Template, name: template, widget: string, default: "spotlight.html"}
-              - {label: Text, name: text, widget: text, default: "Hello World"}
+        fields:
+          - { label: 'Image', name: 'image', widget: 'image', required: true}
+          - { label: 'Video', name: 'video', widget: 'string', required: false}
+          - { label: 'Alt', name: 'alt', required: true }
+          - { label: 'Title', name: 'title', required: false }
+          - { label: 'Caption', name: 'caption', widget: 'markdown', required: false }
+#   - name: "album" # Used in routes, e.g., /admin/collections/blog
+#     label: "Album" # Used in the UI
+#     format: 'json'
+#     folder: "assets/content/album" # The path to the folder where the documents are stored
+#     create: true
+#     slug: '{{slug}}'
+#     editor:
+#       preview: true
+#     fields:
+#       - { label: 'Title', name: 'title', required: true }
+#       - { label: 'Description', name: 'desc', required: false }
+#       - { label: 'Style', name: 'style', required: false }
+#       - label: "Slides"
+#         name: "slides"
+#         widget: "list"
+#         fields:
+#           - { label: 'Image', name: 'image', widget: 'image', required: true}
+#           - { label: 'Video', name: 'video', widget: 'string', required: false}
+#           - { label: 'Alt', name: 'alt', required: true }
+#           - { label: 'Title', name: 'title', required: false }
+#           - { label: 'Caption', name: 'caption', widget: 'markdown', required: false }
+    #   - label: "Post Body Components"
+    #     name: "sections"
+    #     widget: "list"
+    #     types:
+    #       - label: "Carousel"
+    #         name: "carousel"
+    #         widget: object
+    #         fields:
+    #           - label: "Album Style"
+    #             name: "albumStyle"
+    #             widget: "select"
+    #             options:
+    #               - { label: "Full Width", value: 'hero' }
+    #               - { label: "Left", value: 'left' }
+    #               - { label: "Right", value: 'right' }
+    #               - { label: "Center", value: 'center' }
+    #           - label: "Album"
+    #             name: "albumRel"
+    #             widget: "relation"
+    #             collection: "album"
+    #             searchFields: ["title", "desc"]
+    #             valueField: "title"
+    #             displayFields: ["title"]
+    #             required: true
+    #       - label: "Testimonial"
+    #         name: "testimonial"
+    #         widget: object
+    #         fields:
+    #           - label: "Testimonial"
+    #             name: "testimonialRel"
+    #             widget: "relation"
+    #             collection: "testimonials"
+    #             searchFields: ["title", "desc"]
+    #             valueField: "title"
+    #             displayFields: ["title"]
+    #             required: true      
+    #       - label: "Spotlight"
+    #         name: "spotlight"
+    #         widget: object
+    #         fields:
+    #           - {label: Template, name: template, widget: string, default: "spotlight.html"}
+    #           - {label: Text, name: text, widget: text, default: "Hello World"}
