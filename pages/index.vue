@@ -17,6 +17,13 @@ import AppImg from "~/components/Image";
 export default {
   name: "HomePage",
   components: { AppImg, MyMenu },
+  head() {
+    return {
+      script: [
+        { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" }
+      ]
+    };
+  },
   data: () => ({
     loading: 0
   }),

@@ -1,0 +1,91 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'blog'
+    label: 'News'
+    format: 'json'
+    folder: 'assets/content/news'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: "projects" # Used in routes, e.g., /admin/collections/blog
+    label: "Projects" # Used in the UI
+    format: 'json'
+    folder: "assets/content/projects" # The path to the folder where the documents are stored
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Menu Icon', name: 'icon', widget: 'string', default: 'home', required: false }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: "Album Style"
+        name: "albumStyle"
+        widget: "select"
+        options:
+          - { label: "Full Width", value: 'hero' }
+          - { label: "Left", value: 'left' }
+          - { label: "Right", value: 'right' }
+          - { label: "Center", value: 'center' }
+      - label: "Album"
+        name: "albumRel"
+        widget: "relation"
+        collection: "album"
+        searchFields: ["title", "desc"]
+        valueField: "title"
+        displayFields: ["title"]
+        required: true
+      - label: "Post Body Components"
+        name: "sections"
+        widget: "list"
+        types:
+          - label: "Carousel"
+            name: "carousel"
+            widget: object
+            fields:
+              - label: "Album Style"
+                name: "albumStyle"
+                widget: "select"
+                options:
+                  - { label: "Full Width", value: 'hero' }
+                  - { label: "Left", value: 'left' }
+                  - { label: "Right", value: 'right' }
+                  - { label: "Center", value: 'center' }
+              - label: "Album"
+                name: "albumRel"
+                widget: "relation"
+                collection: "album"
+                searchFields: ["title", "desc"]
+                valueField: "title"
+                displayFields: ["title"]
+                required: true
+          - label: "Testimonial"
+            name: "testimonial"
+            widget: object
+            fields:
+              - label: "Testimonial"
+                name: "testimonialRel"
+                widget: "relation"
+                collection: "testimonials"
+                searchFields: ["title", "desc"]
+                valueField: "title"
+                displayFields: ["title"]
+                required: true      
+          - label: "Spotlight"
+            name: "spotlight"
+            widget: object
+            fields:
+              - {label: Template, name: template, widget: string, default: "spotlight.html"}
+              - {label: Text, name: text, widget: text, default: "Hello World"}
