@@ -20,7 +20,7 @@
     "apollo-link-http": "^1.5.16",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.10.1",
-    "gsap": "^3.0.5",
+    "gsap": "^3.6.0",
     "nuxt": "^2.3.4"
   },
   "devDependencies": {
